@@ -83,6 +83,13 @@ static Action OnRoundBoundary(Event event, const char[] name,
 // Forwards
 //
 
+public Action CS_OnTerminateRound(float& delay, CSRoundEndReason& reason) {
+  PrintToServer("Reason: %d", reason);
+  if (reason == CSRoundEnd_HostagesNotRescued) {
+    reason = CSRoundEnd_Draw;
+  }
+}
+
 public Action CS_OnBuyCommand(int client, const char[] weapon) {
   if (!g_objectives_removed) {
     return Plugin_Continue;
