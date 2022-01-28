@@ -84,8 +84,9 @@ static Action OnRoundBoundary(Event event, const char[] name,
 //
 
 public Action CS_OnTerminateRound(float& delay, CSRoundEndReason& reason) {
-  PrintToServer("Reason: %d", reason);
   if (reason == CSRoundEnd_HostagesNotRescued) {
+    reason = CSRoundEnd_Draw;
+  } else if (reason == CSRoundEnd_TargetSaved) {
     reason = CSRoundEnd_Draw;
   }
 }
