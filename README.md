@@ -1,17 +1,14 @@
-# LAN of DOOM respawn plugin
+# LAN of DOOM Disable Objectives
 A SourceMod plugin that disables objectives for CS:S and CS:GO servers.
 
 # Building
 Check out the repository and run the ``./build.sh`` script.
 
 # Installation
-Copy ``lan_of_doom_respawn.smx`` to your server's
+Copy ``lan_of_doom_disable_objectives.smx`` to your server's
 ``css/cstrike/addons/sourcemod/plugins`` directory.
 
 # Console Variables
 
-``sm_lanofdoom_respawn_enabled`` If ``1``, players respawn after death. ``1`` by
-default.
-
-``sm_lanofdoom_respawn_time`` Time in seconds after which dead players will
-respawn. ``2.0`` by default.
+``sm_lanofdoom_disable_objectives`` If ``1``, objectives are disabled at round
+start. ``1`` by default.

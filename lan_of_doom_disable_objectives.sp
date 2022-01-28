@@ -108,7 +108,7 @@ public void OnEntityCreated(int entity, const char[] classname) {
 public void OnPluginStart() {
   g_disable_objectives_cvar =
       CreateConVar("sm_lanofdoom_disable_objectives", "1",
-                   "If true, objectives are disabled.");
+                   "If true, objectives are disabled at round start.");
 
   HookEvent("round_end", OnRoundBoundary);
   HookEvent("round_start", OnRoundBoundary);
