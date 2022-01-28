@@ -12,14 +12,14 @@ trap clean EXIT
 
 curl $tools -o $tmp_dir/tools.tar.gz
 tar -xf $tmp_dir/tools.tar.gz -C $tmp_dir
-$tmp_dir/addons/sourcemod/scripting/spcomp lan_of_doom_disable_objectives.sp
+$tmp_dir/addons/sourcemod/scripting/spcomp lan_of_doom_remove_objectives.sp
 
 mkdir -p build/addons/sourcemod/plugins
-mv lan_of_doom_disable_objectives.smx build/addons/sourcemod/plugins/lan_of_doom_disable_objectives.smx
+mv lan_of_doom_remove_objectives.smx build/addons/sourcemod/plugins/lan_of_doom_remove_objectives.smx
 cd build
-tar -czvf lan_of_doom_disable_objectives.tar.gz addons
+tar -czvf lan_of_doom_remove_objectives.tar.gz addons
 rm -rf addons
 cd ..
-tar -czvf build/lan_of_doom_disable_objectives_source.tar.gz build.sh lan_of_doom_disable_objectives.sp LICENSE README.md
+tar -czvf build/lan_of_doom_remove_objectives_source.tar.gz build.sh lan_of_doom_remove_objectives.sp LICENSE README.md
 
-echo created build/lan_of_doom_disable_objectives.smx
+echo created build/lan_of_doom_remove_objectives.smx

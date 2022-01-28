@@ -3,12 +3,12 @@
 #include <sourcemod>
 
 public const Plugin myinfo = {
-    name = "Disable Objectives", author = "LAN of DOOM",
-    description = "Disables objectives", version = "1.0.0",
-    url = "https://github.com/lanofdoom/counterstrike-respawn"};
+    name = "Remove Objectives", author = "LAN of DOOM",
+    description = "Removes objectives at round start", version = "1.0.0",
+    url = "https://github.com/lanofdoom/counterstrike-remove-objectives"};
 
-static ConVar g_disable_objectives_cvar;
-static bool g_objectives_disabled = false;
+static ConVar g_remove_objectives_cvar;
+static bool g_objectives_removed = false;
 
 static const char kBombEntityName[] = "weapon_c4";
 static const char kBombTargetEntityName[] = "func_bomb_target";
@@ -68,12 +68,12 @@ static void DisableObjectives() {
 
 static Action OnRoundBoundary(Event event, const char[] name,
                               bool dont_broadcast) {
-  if (GetConVarBool(g_disable_objectives_cvar)) {
+  if (GetConVarBool(g_remove_objectives_cvar)) {
     DisableObjectives();
-    g_objectives_disabled = true;
+    g_objectives_removed = true;
   } else {
     EnableObjectives();
-    g_objectives_disabled = false;
+    g_objectives_removed = false;
   }
 
   return Plugin_Continue;
@@ -84,7 +84,7 @@ static Action OnRoundBoundary(Event event, const char[] name,
 //
 
 public Action CS_OnBuyCommand(int client, const char[] weapon) {
-  if (!g_objectives_disabled) {
+  if (!g_objectives_removed) {
     return Plugin_Continue;
   }
 
@@ -96,7 +96,7 @@ public Action CS_OnBuyCommand(int client, const char[] weapon) {
 }
 
 public void OnEntityCreated(int entity, const char[] classname) {
-  if (!g_objectives_disabled) {
+  if (!g_objectives_removed) {
     return;
   }
 
@@ -106,9 +106,9 @@ public void OnEntityCreated(int entity, const char[] classname) {
 }
 
 public void OnPluginStart() {
-  g_disable_objectives_cvar =
-      CreateConVar("sm_lanofdoom_disable_objectives", "1",
-                   "If true, objectives are disabled at round start.");
+  g_remove_objectives_cvar =
+      CreateConVar("sm_lanofdoom_remove_objectives", "1",
+                   "If true, objectives are removed at round start.");
 
   HookEvent("round_end", OnRoundBoundary);
   HookEvent("round_start", OnRoundBoundary);
