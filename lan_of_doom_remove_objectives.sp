@@ -84,6 +84,10 @@ static Action OnRoundBoundary(Event event, const char[] name,
 //
 
 public Action CS_OnTerminateRound(float& delay, CSRoundEndReason& reason) {
+  if (!g_objectives_removed) {
+    return;
+  }
+
   if (reason == CSRoundEnd_HostagesNotRescued) {
     reason = CSRoundEnd_Draw;
   } else if (reason == CSRoundEnd_TargetSaved) {
