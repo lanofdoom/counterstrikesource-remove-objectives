@@ -85,14 +85,20 @@ static Action OnRoundBoundary(Event event, const char[] name,
 
 public Action CS_OnTerminateRound(float& delay, CSRoundEndReason& reason) {
   if (!g_objectives_removed) {
-    return;
+    return Plugin_Continue;
   }
 
   if (reason == CSRoundEnd_HostagesNotRescued) {
     reason = CSRoundEnd_Draw;
-  } else if (reason == CSRoundEnd_TargetSaved) {
-    reason = CSRoundEnd_Draw;
+    return Plugin_Changed;
   }
+
+  if (reason == CSRoundEnd_TargetSaved) {
+    reason = CSRoundEnd_Draw;
+    return Plugin_Changed;
+  }
+
+  return Plugin_Continue;
 }
 
 public Action CS_OnBuyCommand(int client, const char[] weapon) {
