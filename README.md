@@ -1,5 +1,5 @@
 # LAN of DOOM Remove Objectives
-A SourceMod plugin that removes objectives for CS:S and CS:GO servers.
+A SourceMod plugin that removes objectives for CS:S servers.
 
 # Building
 Check out the repository and run the ``./build.sh`` script.
