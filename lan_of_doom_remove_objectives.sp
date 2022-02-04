@@ -5,7 +5,7 @@
 public const Plugin myinfo = {
     name = "Remove Objectives", author = "LAN of DOOM",
     description = "Removes objectives at round start", version = "1.0.0",
-    url = "https://github.com/lanofdoom/counterstrike-remove-objectives"};
+    url = "https://github.com/lanofdoom/counterstrikesource-remove-objectives"};
 
 static ConVar g_remove_objectives_cvar;
 static bool g_objectives_removed = false;
